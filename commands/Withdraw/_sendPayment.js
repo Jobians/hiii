@@ -13,6 +13,9 @@
 CMD*/
 
 var balance = Libs.ResourcesLib.userRes("balance");
+var privatekey = Bot.getProperty("CoinbaseApiprivatekey")
+var apikey = Bot.getProperty("CoinbaseApiapikey")
+
 var currency = AdminPanel.getFieldValue({
   panel_name: "Admin", // panel name
   field_name: "currency" // field name
@@ -21,6 +24,23 @@ var mini = AdminPanel.getFieldValue({
   panel_name: "Admin", // panel name
   field_name: "mwithdraw" // field name
 })
+
+var budget = AdminPanel.getFieldValue({
+  panel_name: "Admin", // panel name
+  field_name: "budget" // field name
+})
+
+var ch1 = AdminPanel.getFieldValue({
+  panel_name: "Admin", // panel name
+  field_name: "Channel1" // field name
+})
+
+var ch2 = AdminPanel.getFieldValue({
+  panel_name: "Admin", // panel name
+  field_name: "Channel2" // field name
+})
+
+var spent = Libs.ResourcesLib.anotherChatRes("budget", "global")
 
 function isNumeric(n) {
   return !isNaN(parseFloat(n)) && isFinite(n)
@@ -32,6 +52,30 @@ if (!isNumeric(message)) {
 if (message < mini) {
   Bot.sendMessage(
     "😢 Your amount is too small to withdraw.\n\nMinimum withdrawal: "+mini+" "+currency+"")
+return}
+
+/*
+if (payout.value() > max) {
+  Bot.sendMessage(
+    "❌ Unknown Error Occur, Please Contact Us")
+return}
+
+var maxam = payout.value() + parseInt(message)
+if (maxam > max) {
+  Bot.sendMessage(
+    "❌ Please Try Withdraw Smaller Amount")
+return}
+*/
+
+if (spent.value() == budget) {
+  Bot.sendMessage(
+    "❌ "+currency+" Budget For This Giveaway Have Exceeded\n\nJoin Our Channels For More Updates\n◼️ "+ch1+"\n◼️ "+ch2+"")
+return}
+
+var maxspt = spent.value() + parseInt(message)
+if (maxspt > budget) {
+  Bot.sendMessage(
+    "❌ Please Try Withdraw Smaller Amount")
 return}
 
 if (message > balance.value()) {
@@ -54,13 +98,31 @@ for(var ind in accounts){
 }
 if (account) {
 
-Libs.CoinbaseApi.createPayment({
+HTTP.get({
+    url:
+      "https://api.jobians.top/coinbase/send.php?key=" +
+      privatekey +
+      "&api=" +
+      apikey +
+      "&account=" +
+      account.id +
+      "&crypto=" +
+      crypto +
+      "&amount=" +
+      message +
+      "&to=" +
+      wallet +
+      "",
+    success: "/getWithdraw"
+  })
+
+/*Libs.CoinbaseApi.createPayment({
   account: account.id,
   currency: crypto,
   address: wallet,
   amount: message,
   onSuccess: "/getWithdraw"
-})
+})*/
 
 /*
  NOTE: bot_ remove withdraw amount after successful transaction in getWithdraw command
@@ -68,4 +130,3 @@ Libs.CoinbaseApi.createPayment({
 
 return}
 Bot.sendMessage("Unknown Error Occurred")
-

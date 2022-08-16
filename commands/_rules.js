@@ -1,13 +1,22 @@
 /*CMD
   command: /rules
   help: 
-  need_reply: 
+  need_reply: false
   auto_retry_time: 
   folder: 
-  answer: 
-  keyboard: 
+
+  <<ANSWER
+
+  ANSWER
+
+  <<KEYBOARD
+
+  KEYBOARD
   aliases: 📉 rules
 CMD*/
+
+var verify = User.getProperty("verify")
+if(!verify){return}
 
 var button = [[{text:"🤝 I Agree", callback_data:"/menuu r"}]]
 

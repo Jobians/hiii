@@ -15,6 +15,9 @@
   aliases: withdraw, 📤 payout
 CMD*/
 
+var verify = User.getProperty("verify")
+if(!verify){return}
+
 /*
 // for withdraw with all coin uncomment this
 var accounts = Bot.getProperty("CBAPI-accounts");

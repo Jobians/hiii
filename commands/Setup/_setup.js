@@ -4,14 +4,8 @@
   need_reply: false
   auto_retry_time: 
   folder: Setup
-
-  <<ANSWER
-
-  ANSWER
-
-  <<KEYBOARD
-
-  KEYBOARD
+  answer: 
+  keyboard: 
   aliases: 
 CMD*/
 

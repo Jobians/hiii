@@ -1,13 +1,22 @@
 /*CMD
   command: 🎁 Referral
   help: 
-  need_reply: 
+  need_reply: false
   auto_retry_time: 
   folder: 
-  answer: 
-  keyboard: 
+
+  <<ANSWER
+
+  ANSWER
+
+  <<KEYBOARD
+
+  KEYBOARD
   aliases: 
 CMD*/
+
+var verify = User.getProperty("verify")
+if(!verify){return}
 
 var commission = AdminPanel.getFieldValue({
   panel_name: "Admin", // panel name
@@ -49,4 +58,3 @@ var key = [[{ title: "📒 Referral List", command: "Referrallist"}]]
 Bot.sendInlineKeyboard(key,"*Share Me With Your Friends & Earn "+commission+" "+currency+"*" + "\n\n*👨 Total users:* " +
   Libs.ReferralLib.getRefCount() +
   "\n*🎁 Referral bonus:* "+commission+" "+currency+"\n\n*💹 Your Referral Link :*\n"+Libs.ReferralLib.getLink()+"\n\n*Your Referral list ⤵️*",{ disable_web_page_preview: true })
-

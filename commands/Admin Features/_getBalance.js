@@ -4,14 +4,8 @@
   need_reply: false
   auto_retry_time: 
   folder: Admin Features
-
-  <<ANSWER
-
-  ANSWER
-
-  <<KEYBOARD
-
-  KEYBOARD
+  answer: 
+  keyboard: 
   aliases: 
 CMD*/
 
@@ -24,4 +18,3 @@ message_id : request.message.message_id
 Libs.CoinbaseApi.getBalance(params);
 
 //Libs.CoinbaseApi.getBalance("LTC");
-

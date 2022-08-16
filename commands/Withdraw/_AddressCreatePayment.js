@@ -4,14 +4,8 @@
   need_reply: true
   auto_retry_time: 
   folder: Withdraw
-
-  <<ANSWER
-
-  ANSWER
-
-  <<KEYBOARD
-
-  KEYBOARD
+  answer: 
+  keyboard: 
   aliases: 
 CMD*/
 
@@ -29,4 +23,3 @@ Bot.runCommand("/start")
 //Coinbase also check it
   return
 }
-

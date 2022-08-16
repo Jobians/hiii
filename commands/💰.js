@@ -1,17 +1,22 @@
 /*CMD
   command: 💰
   help: 
-  need_reply: 
+  need_reply: false
   auto_retry_time: 
   folder: 
-  answer: 
-  keyboard: 
+
+  <<ANSWER
+
+  ANSWER
+
+  <<KEYBOARD
+
+  KEYBOARD
   aliases: 
 CMD*/
 
 var verify = User.getProperty("verify")
-if(!verify){
-return}
+if(!verify){return}
 
 var currency = AdminPanel.getFieldValue({
   panel_name: "Admin", // panel name
@@ -21,4 +26,16 @@ var currency = AdminPanel.getFieldValue({
 //Libs.MembershipChecker.check()
 var res = Libs.ResourcesLib.userRes("balance");
 
-Bot.sendMessage("🏦 Balance: "+res.value().toFixed(6) + " "+currency+"")
+var payout = Libs.ResourcesLib.userRes("payout")
+
+Bot.sendMessage(
+      "*🧰 Account Balance:*\n\n*🔻 Total Balance:* " +
+        res.value().toFixed(5) +
+        " *" +
+        currency +
+        "*\n*🔻 Total Payouts:* " +
+        payout.value().toFixed(5) +
+        " *" +
+        currency +
+        "*"
+    )

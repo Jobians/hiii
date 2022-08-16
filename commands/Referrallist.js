@@ -42,6 +42,3 @@ var users = refList.getUsers();
 
 for (var ind in users) {
   users_rows = users_rows + "\n👤 " + Libs.commonLib.getLinkFor( users[ind] )}
-
- 
-

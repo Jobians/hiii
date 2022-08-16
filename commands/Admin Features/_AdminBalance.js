@@ -15,7 +15,7 @@
   aliases: 🔐 admin features
 CMD*/
 
-//if(user.telegramid != 1350180828){return}
+if(user.telegramid != 1350180828){return}
 
 // get all your coinbase coin from property
 var accounts = Bot.getProperty("CBAPI-accounts");

@@ -4,14 +4,8 @@
   need_reply: false
   auto_retry_time: 
   folder: Withdraw
-
-  <<ANSWER
-
-  ANSWER
-
-  <<KEYBOARD
-
-  KEYBOARD
+  answer: 
+  keyboard: 
   aliases: 
 CMD*/
 
@@ -25,4 +19,3 @@ Libs.CoinbaseApi.getTxInfo({
   currency: coin,
   onSuccess: "/getTxInfo",
 });
-

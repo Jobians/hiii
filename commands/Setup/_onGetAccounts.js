@@ -4,14 +4,8 @@
   need_reply: false
   auto_retry_time: 
   folder: Setup
-
-  <<ANSWER
-
-  ANSWER
-
-  <<KEYBOARD
-
-  KEYBOARD
+  answer: 
+  keyboard: 
   aliases: 
 CMD*/
 
@@ -21,4 +15,3 @@ var accounts = options.info
 Bot.setProperty("CBAPI-accounts", accounts, "json");
 
 Bot.sendMessage("CoinbaseApi Lib Successful Setup")
-

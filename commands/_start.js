@@ -35,7 +35,7 @@ var trackOptions = {
 Libs.ReferralLib.currentUser.track(trackOptions);
 
 function doAtractedByUser(refUser) {
-Bot.sendMessageToChatWithId(refUser.chatId, "*💠 New Referral - *"+"[" +user.first_name+"]" + "(" + "tg://user?id=" + user.telegramid + ")"+"*\nReward only if user pass our verification!*");
+/*Bot.sendMessageToChatWithId(refUser.chatId, "*💠 New Referral - *"+"[" +user.first_name+"]" + "(" + "tg://user?id=" + user.telegramid + ")"+"*\nReward only if user pass our verification!*");*/
 }
 
 var broadcast = Bot.getProperty("Broadcast") ?
